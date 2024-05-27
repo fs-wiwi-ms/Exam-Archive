@@ -1,2 +1,9 @@
 # Exam-Archive
-xamArchive is an open-source platform developed by Fachschaft WiWi to facilitate the upload, management, and access of past exams. This platform is designed to help students at our university by providing a centralized location for exam resources, making it easier for everyone to find and utilize past exam papers for study and preparation.
+ExamArchive is an open-source platform by Fachschaft WiWi for uploading, managing, and accessing past exams, helping students find and use exam papers for study.
+
+ 
+## License
+This project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+For any questions or support, please contact us at [klausurarchiv@fachschaft-wiwi.ms](mailto:klausurarchiv@fachschaft-wiwi.ms).
