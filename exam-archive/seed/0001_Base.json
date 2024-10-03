@@ -1,0 +1,86 @@
+[
+{
+    "model": "core.degreetype",
+    "pk": 1,
+    "fields": {
+        "name": "Bachelor",
+        "created_at": "2024-10-01T10:41:35.551Z",
+        "updated_at": "2024-10-01T10:41:35.551Z"
+    }
+},
+{
+    "model": "core.degreetype",
+    "pk": 2,
+    "fields": {
+        "name": "Master",
+        "created_at": "2024-10-01T10:41:39.302Z",
+        "updated_at": "2024-10-01T10:41:39.302Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 1,
+    "fields": {
+        "name": "Wirtschaftsinformatik",
+        "abbreviation": "WI",
+        "degree": 1,
+        "created_at": "2024-10-01T10:41:58.783Z",
+        "updated_at": "2024-10-01T10:41:58.783Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 2,
+    "fields": {
+        "name": "Information Systems",
+        "abbreviation": "IS",
+        "degree": 2,
+        "created_at": "2024-10-01T10:42:25.638Z",
+        "updated_at": "2024-10-01T10:42:25.638Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 3,
+    "fields": {
+        "name": "Betriebswirtschaftslehre",
+        "abbreviation": "BWL",
+        "degree": 1,
+        "created_at": "2024-10-01T10:42:10.538Z",
+        "updated_at": "2024-10-01T10:42:10.538Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 4,
+    "fields": {
+        "name": "Betriebswirtschaftslehre",
+        "abbreviation": "BWL",
+        "degree": 2,
+        "created_at": "2024-10-01T10:42:15.421Z",
+        "updated_at": "2024-10-01T10:42:15.421Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 5,
+    "fields": {
+        "name": "Volkswirtschaftslehre",
+        "abbreviation": "VWL",
+        "degree": 1,
+        "created_at": "2024-10-01T10:42:39.919Z",
+        "updated_at": "2024-10-01T10:42:39.919Z"
+    }
+},
+{
+    "model": "core.fieldofstudy",
+    "pk": 6,
+    "fields": {
+        "name": "Volkswirtschaftslehre",
+        "abbreviation": "VWL",
+        "degree": 2,
+        "created_at": "2024-10-01T10:42:44.621Z",
+        "updated_at": "2024-10-01T10:42:44.621Z"
+    }
+}
+]
