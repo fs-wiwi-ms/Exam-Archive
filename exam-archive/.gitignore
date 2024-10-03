@@ -1,3 +1,4 @@
 exams/
 .env
 /settings.py
+/.python-version

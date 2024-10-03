@@ -8,7 +8,7 @@ from examarchive.settings.common import *  # noqa: F403
 load_dotenv()
 
 # Load execution mode settings
-if os.environ.get("DJANGO_ENV", "development") == "development":
+if os.environ.get("DJANGO_ENV", "production") == "development":
     from examarchive.settings.development import *  # noqa: F403
 else:
     from examarchive.settings.production import *  # noqa: F403
