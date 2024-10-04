@@ -40,7 +40,7 @@ class Exam(models.Model):
 
         display_names: dict[str, str] = {
             file_format["extension"]: file_format["display_name"]
-            for file_format in settings.FILE_UPLOAD_ALLOWED_FORMATS
+            for file_format in settings.EXAM_FILE_FORMATS
         }
 
         return display_names.get(file_extension, "Unknown")

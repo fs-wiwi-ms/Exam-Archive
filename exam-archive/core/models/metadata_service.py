@@ -3,6 +3,7 @@ from collections.abc import Callable
 
 from django.conf import settings
 from django.db.models.fields.files import FieldFile
+from docx import Document
 from pypdf import PdfReader, PdfWriter
 
 from core.utils import extract_file_mime_type
@@ -17,7 +18,8 @@ def modify_file_metadata(file: FieldFile) -> None:
 
     file_handlers: dict[str, Callable] = {
         "application/pdf": _process_pdf,
-        # Future file types can be added here like docx, png, etc.
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document": _process_docx,
+        # Future file types can be added here
     }
     file_handler: Callable[[FieldFile], None] = file_handlers.get(file_mime_type)
 
@@ -57,5 +59,33 @@ def _process_pdf(file_field: FieldFile) -> None:
     except Exception as e:
         logger.error(
             f"An error occurred while processing the PDF file '{file_field.name}': {e}",
+            exc_info=True,
+        )
+
+
+def _process_docx(file_field: FieldFile) -> None:
+    """Processes DOCX files to modify the Author metadata and overwrite the original file."""
+
+    logger.info(
+        f"Starting the process of updating DOCX metadata for file: '{file_field.name}'."
+    )
+    try:
+        with file_field.open("rb") as docx_file:
+            document = Document(docx_file)
+            # Assuming metadata modification via core properties
+            core_props = document.core_properties
+            core_props.author = settings.EXAM_METADATA_AUTHOR
+            document.add_paragraph("It was a dark and stormy night.")
+
+        with file_field.open("wb") as docx_output_file:
+            document.save(docx_output_file)
+
+        logger.info(
+            f"Successfully processed and updated DOCX metadata for file '{file_field.name}'."
+        )
+
+    except Exception as e:
+        logger.error(
+            f"An error occurred while processing the DOCX file '{file_field.name}': {e}",
             exc_info=True,
         )

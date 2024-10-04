@@ -36,7 +36,7 @@ def validate_file(file: FieldFile) -> None:
     The allowed formats and MIME types are fetched from settings.
     """
     allowed_formats: dict[str, dict] = {
-        f["extension"]: f for f in settings.FILE_UPLOAD_ALLOWED_FORMATS
+        f["extension"]: f for f in settings.EXAM_FILE_FORMATS
     }
 
     file_extension: str = extract_file_extension(file)
@@ -59,8 +59,6 @@ def validate_file(file: FieldFile) -> None:
         )
 
     # Validate file size using the max_size defined for the file type
-    max_file_size: int = allowed_formats[file_extension]["max_size"]
+    max_file_size: int = settings.EXAM_MAX_UPLOAD_FILE_SIZE
     if file.size > max_file_size:
-        raise ValidationError(
-            f"File size exceeds the limit of {allowed_formats[file_extension]['max_size_mb']} MB."
-        )
+        raise ValidationError(f"File size exceeds the limit of {max_file_size} MB.")

@@ -48,7 +48,7 @@ SECRET_KEY: str = _get_secret_key()
 
 def _get_allowed_hosts() -> str:
     if "EXAMARCHIVE_ALLOWED_HOSTS" in os.environ:
-        return os.getenv("EXAMARCHIVE_ALLOWED_HOSTS")
+        return __get_list("EXAMARCHIVE_ALLOWED_HOSTS")
     elif DEBUG is True:
         return ["127.0.0.1", "localhost"]
     raise RuntimeError(
@@ -213,19 +213,9 @@ DEFAULT_EXAM_FILE_FORMATS: list[dict[str, str]] = [
         "display_name": "PDF Document",
     },
     {
-        "extension": ".doc",
-        "mime_type": "application/msword",
-        "display_name": "Word Document",
-    },
-    {
         "extension": ".docx",
         "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        "display_name": "DOCX Document",
-    },
-    {
-        "extension": ".png",
-        "mime_type": "image/png",
-        "display_name": "PNG Image",
+        "display_name": "Word Document",
     },
 ]
 
