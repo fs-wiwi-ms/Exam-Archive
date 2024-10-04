@@ -30,7 +30,7 @@ def validate_year(value) -> None:
         )
 
 
-def validate_file(file: FieldFile) -> None:
+def validate_file_format(file: FieldFile) -> None:
     """
     Validates both the file extension, MIME type, and file size of the uploaded file.
     The allowed formats and MIME types are fetched from settings.
@@ -41,9 +41,6 @@ def validate_file(file: FieldFile) -> None:
 
     file_extension: str = extract_file_extension(file)
     file_mime_type: str = extract_file_mime_type(file)
-
-    if not file_extension or not file_mime_type:
-        raise ValidationError(f"The selected file '{file.name}' does not exist.")
 
     # Validate file extension exists in allowed formats
     if file_extension not in allowed_formats.keys():
@@ -58,6 +55,8 @@ def validate_file(file: FieldFile) -> None:
             f"File MIME type '{file_mime_type}' does not match the expected MIME type '{expected_mime_type}' for extension '{file_extension}'."
         )
 
+
+def validate_file_size(file: FieldFile) -> None:
     # Validate file size using the max_size defined for the file type
     max_file_size: int = settings.EXAM_MAX_UPLOAD_FILE_SIZE
     if file.size > max_file_size:

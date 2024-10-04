@@ -2,12 +2,19 @@ from django.conf import settings
 from django.db import models
 
 from core.models.metadata_service import modify_file_metadata
-from core.models.validators import validate_file, validate_term, validate_year
+from core.models.validators import (
+    validate_file_format,
+    validate_file_size,
+    validate_term,
+    validate_year,
+)
 from core.utils import extract_file_extension, to_snake_case
 
 
 class Exam(models.Model):
-    file = models.FileField(upload_to="exams/", validators=[validate_file])
+    file = models.FileField(
+        upload_to="exams/", validators=[validate_file_format, validate_file_size]
+    )
     year = models.PositiveIntegerField(
         validators=[validate_year], help_text="The year the term started."
     )
