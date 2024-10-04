@@ -25,7 +25,7 @@ def get_current_term_and_year() -> Tuple[str, str]:
     current_year = today.year
     current_month_day = (today.month, today.day)
 
-    for term in settings.SEMESTER_SETTINGS:
+    for term in settings.TERMS:
         start_month_day = term["start_date"]
         end_month_day = term["end_date"]
 

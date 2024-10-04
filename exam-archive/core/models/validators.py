@@ -7,9 +7,9 @@ from core.utils import extract_file_extension, extract_file_mime_type
 
 def validate_term(value) -> None:
     """
-    Validator to ensure that the 'term' field has a valid value based on SEMESTER_SETTINGS.
+    Validator to ensure that the 'term' field has a valid value based on TERMS.
     """
-    valid_terms = [term["code"] for term in settings.SEMESTER_SETTINGS]
+    valid_terms = [term["code"] for term in settings.TERMS]
 
     if value not in valid_terms:
         raise ValidationError(

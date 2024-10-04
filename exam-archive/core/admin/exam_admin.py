@@ -12,9 +12,7 @@ class ExamForm(forms.ModelForm):
     min_year = settings.EXAM_MIN_YEAR
     max_year = settings.EXAM_MAX_YEAR
     YEARS_CHOICES = [(year, year) for year in range(min_year, max_year + 1)]
-    TERM_CHOICES = [
-        (term["code"], term["display_name"]) for term in settings.SEMESTER_SETTINGS
-    ]
+    TERM_CHOICES = [(term["code"], term["display_name"]) for term in settings.TERMS]
 
     class Meta:
         model = Exam

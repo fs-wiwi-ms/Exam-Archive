@@ -23,14 +23,14 @@ class Exam(models.Model):
 
     @property
     def readable_term(self):
-        for semester in settings.SEMESTER_SETTINGS:
-            if semester["code"] == self.term:
-                start_month, _ = semester["start_date"]
-                end_month, _ = semester["end_date"]
+        for term in settings.TERMS:
+            if term["code"] == self.term:
+                start_month, _ = term["start_date"]
+                end_month, _ = term["end_date"]
                 if start_month > end_month:
-                    return f"{semester['code']}-{self.year}/{str(self.year + 1)[-2:]}"
+                    return f"{term['code']}-{self.year}/{str(self.year + 1)[-2:]}"
                 else:
-                    return f"{semester['code']}-{self.year}"
+                    return f"{term['code']}-{self.year}"
 
         return "Unknown Term"
 
